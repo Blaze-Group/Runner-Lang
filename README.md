@@ -43,28 +43,28 @@
 
 # Синтаксис
 **_Для вывода текста:_**
-```
+```cpp
 out("Hello, World!")
 ```
 **_Что бы вывести текст на новой строке:_**
-```
+```cpp
 outline("Hello, World!")
 ```
 **_Или же:_**
-```
+```cpp
 out("Hello, World!\n")
 ```
 **_Для создания переменных:_**
-```
+```cpp
 text = "Hello, World!"
 ```
 **_Также:_**
-```
+```csharp
 // Данное создание не стабильно!
 var text = "Hello, World!"
 ```
 **_Для создание функции:_**
-```
+```cpp
 void Main() {
   outline("Hello, World!")
 }
@@ -72,12 +72,12 @@ void Main() {
 Main()
 ```
 **_Для создание пользовательского ввода:_**
-```
+```cpp
 inputInt = toInt(Input("Age: "))
 inputStr = toString(Input("Name: "))
 ```
 **_Для создание проверки:_**
-```
+```cpp
 IF (2 > 0) {
   outline("2 > 0")
 } ELSE IF (2 < 0) {
@@ -87,7 +87,7 @@ IF (2 > 0) {
 }
 ```
 **_Конвертеры:_**
-```
+```java
 int = 1
 str = "1"
 outline(toString(int))
@@ -97,7 +97,7 @@ outline(toInt(str))
 **_Что бы узнать подробнее перейдите на подробную докуметацию_**
 
 ## Добавление других скриптов
-```
+```cpp
 include "SCRIPT_NAME"
 ```
 

@@ -1,5 +1,5 @@
-package "DateTime"
-package "GUI"
+import "DateTime"
+import "GUI"
 
 void Ghoul() {
     for(i=1000, i>0, i-=7) {
@@ -11,7 +11,7 @@ void Ghoul() {
 void Lox(Name, weight, height) {
     window = Window(Name + " Lox")
     window.add(Name + " Lox")
-    window.setMinimumSize(weight, height)
+    window.setGeometry(weight, height)
     window.setVisible(1)
     window.pack()
 }

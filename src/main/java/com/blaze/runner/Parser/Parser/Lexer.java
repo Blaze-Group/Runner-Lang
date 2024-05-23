@@ -98,7 +98,7 @@ public final class Lexer {
         KEYWORDS.put("continue", TokenType.CONTINUE);
         KEYWORDS.put("void", TokenType.VOID);
         KEYWORDS.put("return", TokenType.RETURN);
-        KEYWORDS.put("package", TokenType.PACKAGE);
+        KEYWORDS.put("import", TokenType.PACKAGE);
         KEYWORDS.put("switch", TokenType.SWITCH);
         KEYWORDS.put("case", TokenType.CASE);
         KEYWORDS.put("include", TokenType.INCLUDE);

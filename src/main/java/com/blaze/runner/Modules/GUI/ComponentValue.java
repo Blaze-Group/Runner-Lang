@@ -59,7 +59,7 @@ public abstract class ComponentValue extends MapValue {
         set("repaint", Converters.voidToVoid(component::repaint));
         set("revalidate", Converters.voidToVoid(component::revalidate));
         set("setMaximumSize", voidDimensionFunction(component::setMaximumSize));
-        set("setMinimumSize", voidDimensionFunction(component::setMinimumSize));
+        set("setGeometry", voidDimensionFunction(component::setMinimumSize));
         set("setName", Converters.stringToVoid(component::setName));
         set("setPreferredSize", voidDimensionFunction(component::setPreferredSize));
         set("setSize", voidDimensionFunction(component::setSize));

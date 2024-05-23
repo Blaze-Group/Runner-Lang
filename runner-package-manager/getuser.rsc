@@ -1,9 +1,11 @@
 import "System"
 
 void getpass() {
-  outline(System.getProperty("user.pass"))
+  UserPass = System.getProperty("user.pass")
+  return UserPass
 }
 
 void getuser() {
-  outline(System.getProperty("user.name"))
+  UserName = System.getProperty("user.name")
+  return UserName
 }

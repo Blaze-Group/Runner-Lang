@@ -3,16 +3,10 @@ package com.blaze.runner.Modules.GUI;
 import com.blaze.runner.Libary.Arguments;
 import com.blaze.runner.Runtime.Value;
 
-import java.awt.Component;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import javax.swing.*;
 
 /**
  * Functions for working with components.
@@ -25,6 +19,8 @@ public final class Components {
         Arguments.checkOrOr(0, 1, args.length);
         String title = (args.length == 1) ? args[0].asString() : "";
         final JFrame frame = new JFrame(title);
+        ImageIcon icon = new ImageIcon("Runner.ico");
+        frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return new JFrameValue(frame);
     }

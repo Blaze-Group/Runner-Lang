@@ -12,10 +12,15 @@ import com.blaze.runner.Runtime.Values.StringValue;
 import com.blaze.runner.Runtime.Variables;
 import kotlin.UninitializedPropertyAccessException;
 
+import java.awt.*;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
 
@@ -46,6 +51,38 @@ public class System implements Module {
                 }
             }
         });
+        SystemMap.set("ping", new Function() {
+            @Override
+            public Value execute(Value... args) {
+                String URL = args[0].asString();
+                Process process = null;
+                try {
+                    process = Runtime.getRuntime().exec("ping " + URL);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8));
+                String line;
+                while (true) {
+                    try {
+                        if (!((line = reader.readLine()) != null)) break;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    java.lang.System.out.println(line);
+                }
+
+                int exitCode = 0;
+                try {
+                    exitCode = process.waitFor();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                java.lang.System.out.println("Код завершения: " + exitCode);
+                return null;
+            }
+        });
         SystemMap.set("start", new Function() {
             @Override
             public Value execute(Value... args) {
@@ -56,6 +93,17 @@ public class System implements Module {
                     throw new RuntimeException(e);
                 }
                 return NumberValue.ZERO;
+            }
+        });
+        SystemMap.set("getScreenGeometry", new Function() {
+            @Override
+            public Value execute(Value... args) {
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+                Dimension dim = toolkit.getScreenSize();
+                MapValue map = new MapValue(2);
+                map.set("width", new NumberValue(dim.getWidth()));
+                map.set("height", new NumberValue(dim.getHeight()));
+                return map;
             }
         });
         SystemMap.set("execute", new Function() {

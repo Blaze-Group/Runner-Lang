@@ -138,7 +138,7 @@ public final class Parser {
         if (match(TokenType.RETURN)) {
             return new ReturnStatement(expression());
         }
-        if (match(TokenType.PACKAGE)) {
+        if (match(TokenType.IMPORT)) {
             return new UsingStatement(expression());
         }
         if (match(TokenType.INCLUDE)) {
@@ -159,7 +159,7 @@ public final class Parser {
         if (match(TokenType.VAR)) {
             return assignmentStatement();
         }
-        if (lookMatch(0, TokenType.WORD) && lookMatch(1, TokenType.LPAREN)) {
+        if (match(TokenType.RUN) && lookMatch(1, TokenType.WORD) && lookMatch(2, TokenType.LPAREN)) {
             return new ExprStatement(functionChain(qualifiedName()));
         }
         return assignmentStatement();

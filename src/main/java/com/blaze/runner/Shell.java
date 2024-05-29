@@ -2,7 +2,6 @@ package com.blaze.runner;
 
 import com.blaze.runner.Core.Information;
 import com.blaze.runner.Parser.Parser.*;
-import com.blaze.runner.Programs.FileStruct;
 import com.blaze.runner.Programs.Log;
 
 import java.io.*;
@@ -43,8 +42,6 @@ public class Shell {
 
 
     public static void main(String[] args) throws Exception {
-        FileStruct.DirectoryCreateAll();
-
         if(args.length > 0) {
             Run(args[0]);
             Scanner scanner = new Scanner(System.in);

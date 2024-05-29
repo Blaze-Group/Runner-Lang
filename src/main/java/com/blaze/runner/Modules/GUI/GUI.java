@@ -118,13 +118,13 @@ public final class GUI implements Module {
     public void init() {
         initConstants();
         // Components
-        Functions.set("newButton", Components::newButton);
-        Functions.set("newLabel", Components::newLabel);
-        Functions.set("newPanel", Components::newPanel);
-        Functions.set("newProgressBar", Components::newProgressBar);
-        Functions.set("newScrollPane", Components::newScrollPane);
-        Functions.set("newTextArea", Components::newTextArea);
-        Functions.set("newTextField", Components::newTextField);
+        Functions.set("Button", Components::newButton);
+        Functions.set("Label", Components::newLabel);
+        Functions.set("Panel", Components::newPanel);
+        Functions.set("ProgressBar", Components::newProgressBar);
+        Functions.set("ScrollPane", Components::newScrollPane);
+        Functions.set("TextArea", Components::newTextArea);
+        Functions.set("TextField", Components::newTextField);
         Functions.set("Window", Components::newWindow);
 
 

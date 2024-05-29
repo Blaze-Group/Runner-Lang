@@ -1,4 +1,4 @@
-package com.blaze.runner.Modules.DateTime;
+package com.blaze.runner.Modules.Time;
 
 
 import com.blaze.runner.Libary.Arguments;
@@ -13,7 +13,7 @@ import com.blaze.runner.Runtime.Variables;
 import java.util.Date;
 
 
-public final class DateTime implements Module {
+public final class Time implements Module {
 
 
 

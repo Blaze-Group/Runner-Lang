@@ -33,7 +33,7 @@ public class WindowValue extends ContainerValue {
         set("isLocationByPlatform", Converters.voidToBoolean(window::isLocationByPlatform));
         set("isShowing", Converters.voidToBoolean(window::isShowing));
         set("getOpacity", Converters.voidToFloat(window::getOpacity));
-        set("pack", Converters.voidToVoid(window::pack));
+        set("loop", Converters.voidToVoid(window::pack));
         set("setAlwaysOnTop", Converters.booleanOptToVoid(window::setAlwaysOnTop));
         set("setAutoRequestFocus", Converters.booleanToVoid(window::setAutoRequestFocus));
         set("setFocusableWindowState", Converters.booleanToVoid(window::setFocusableWindowState));

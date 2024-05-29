@@ -58,7 +58,7 @@ public class Console {
         outputSettings.error(value);
     }
 
-    public static void handleException(Thread thread, Throwable throwable) throws Exception {
+    public static void handleException(Thread thread, Throwable throwable) {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try(final PrintStream ps = new PrintStream(baos)) {
             String RED = "\033[41;30m";
@@ -71,7 +71,6 @@ public class Console {
                     If you don`t know . Please read documentation for use error! Or typed Author`s personal message!
                     https://github.com/Blaze-Group/Runner
                     """ + WHITE, throwable.getMessage(), thread.getName());
-            Log.AppendError(throwable.getMessage(), thread.getName());
             for (CallStack.CallInfo call : CallStack.getCalls()) {
                 ps.printf("\tat %s%n", call);
             }

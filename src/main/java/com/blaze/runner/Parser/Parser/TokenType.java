@@ -28,7 +28,7 @@ public enum TokenType {
     COLONCOLONEQ, // ::=
     LTLTEQ, // <<=
     GTGTEQ, // >>=
-    GTGTGTEQ, // >>>=
+    GTGTGTEQ,// >>>=
     
     PLUSPLUS, // ++
     MINUSMINUS, // --
@@ -78,13 +78,14 @@ public enum TokenType {
     CONTINUE,
     VOID,
     RETURN,
-    PACKAGE,
+    IMPORT,
     SWITCH,
     CASE,
     INCLUDE,
     CLASS,
     NEW,
     VAR,
+    RUN,
 
     PLUS, // +
     MINUS, // -

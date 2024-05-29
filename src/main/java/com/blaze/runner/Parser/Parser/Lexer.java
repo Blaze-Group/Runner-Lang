@@ -7,6 +7,7 @@ import com.blaze.runner.Runtime.Values.NumberValue;
 import com.blaze.runner.Runtime.Values.StringValue;
 
 import java.awt.event.KeyEvent;
+import java.awt.image.FilteredImageSource;
 import java.util.*;
 
 
@@ -90,23 +91,22 @@ public final class Lexer {
         KEYWORDS = new HashMap<>();
         KEYWORDS.put("out", TokenType.OUT);
         KEYWORDS.put("outline", TokenType.OUTLINE);
-        KEYWORDS.put("IF", TokenType.IF);
-        KEYWORDS.put("ELSE", TokenType.ELSE);
+        KEYWORDS.put("if", TokenType.IF);
+        KEYWORDS.put("else", TokenType.ELSE);
         KEYWORDS.put("while", TokenType.WHILE);
         KEYWORDS.put("for", TokenType.FOR);
         KEYWORDS.put("break", TokenType.BREAK);
         KEYWORDS.put("continue", TokenType.CONTINUE);
         KEYWORDS.put("void", TokenType.VOID);
         KEYWORDS.put("return", TokenType.RETURN);
-        KEYWORDS.put("import", TokenType.PACKAGE);
+        KEYWORDS.put("import", TokenType.IMPORT);
         KEYWORDS.put("switch", TokenType.SWITCH);
         KEYWORDS.put("case", TokenType.CASE);
         KEYWORDS.put("include", TokenType.INCLUDE);
         KEYWORDS.put("class", TokenType.CLASS);
         KEYWORDS.put("new", TokenType.NEW);
         KEYWORDS.put("var", TokenType.VAR);
-
-
+        KEYWORDS.put("run", TokenType.RUN);
     }
 
     public static Set<String> getKeywords() {
@@ -370,6 +370,7 @@ public final class Lexer {
         Functions.set("Input", new Standart.Input());
         Functions.set("InputLine", new Standart.InputLine());
         Functions.set("try", new Standart.tryCatch());
+        Functions.set("Replace", new Standart.Replacement());
 
         toStatement();
     }

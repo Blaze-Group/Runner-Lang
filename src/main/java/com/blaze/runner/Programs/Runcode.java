@@ -1,6 +1,7 @@
 package com.blaze.runner.Programs;
 
 import com.blaze.runner.Exceptions.StopException;
+import com.blaze.runner.Parser.Preprocessor.Preprocessor;
 import com.blaze.runner.Shell;
 import com.blaze.runner.Parser.AST.Statement;
 import com.blaze.runner.Parser.Parser.*;
@@ -25,6 +26,7 @@ public class Runcode {
         options.validate();
         final TimeMeasurement measurement = new TimeMeasurement();
         measurement.start("Tokenize time");
+        input = Preprocessor.preprocess(input);
         final List<Token> tokens = Lexer.tokenize(input);
         Log.AppendMultiLine(SourceLoader.readSource(Path), "Source Code: ");
         measurement.stop("Tokenize time");

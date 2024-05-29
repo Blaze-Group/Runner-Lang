@@ -68,4 +68,16 @@ public class Standart {
             return NumberValue.ZERO;
         }
     }
+
+    public static class Replacement implements Function {
+
+        @Override
+        public Value execute(Value... args) {
+            String variable_name = args[0].asString();
+            String replace_char = args[1].asString();
+            String replace_to_char = args[2].asString();
+            variable_name = variable_name.replace(replace_char, replace_to_char);
+            return new StringValue(variable_name);
+        }
+    }
 }

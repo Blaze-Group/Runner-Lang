@@ -1,11 +1,11 @@
 import "System"
 
 void getpass() {
-  UserPass = System.getProperty("user.pass")
-  return UserPass
+  userpass = System.getProperty("user.pass")
+  return userpass
 }
 
-void getuser() {
-  UserName = System.getProperty("user.name")
-  return UserName
+void getname() {
+  username = System.getProperty("user.name")
+  return username
 }

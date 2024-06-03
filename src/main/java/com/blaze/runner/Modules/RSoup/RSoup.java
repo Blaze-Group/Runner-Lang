@@ -42,6 +42,18 @@ public class RSoup implements Module {
         }
     }
 
+    private static class ParseValue extends MapValue {
+        public ParseValue() {
+            super(2);
+            init();
+        }
+
+        private void init() {
+            set("select", new select());
+            set("body", new body());
+        }
+    }
+
     private static class pars implements Function {
         @Override
         public Value execute(Value... args) {
@@ -54,9 +66,8 @@ public class RSoup implements Module {
             docs = doc.toString();
             Variables.set("document", new StringValue((docs).getBytes(StandardCharsets.UTF_8).toString()));
             docum = doc;
-            return new StringValue(docum.toString());
-
-
+            //return new StringValue(docum.toString());
+            return new ParseValue();
         }
     }
 

@@ -36,7 +36,7 @@ public final class IncludeStatement extends InterruptableNode implements Stateme
         }
 
         try {
-            final Statement program = loadProgram(path);
+            final Statement program = loadProgram(path + ".rsc");
             if (program != null) {
                 program.accept(new FunctionAdder());
                 program.execute();

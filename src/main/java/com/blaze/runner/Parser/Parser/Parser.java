@@ -1,18 +1,15 @@
 package com.blaze.runner.Parser.Parser;
 
 import com.blaze.runner.Exceptions.ParseException;
+import com.blaze.runner.Exceptions.TypeException;
+import com.blaze.runner.Modules.Module;
 import com.blaze.runner.Parser.Parser.Debug.ParseErrors;
 import com.blaze.runner.Runtime.Values.NumberValue;
 import com.blaze.runner.Runtime.Values.StringValue;
 import com.blaze.runner.Runtime.Values.UserDefinedFunction;
 import com.blaze.runner.Parser.AST.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public final class Parser {

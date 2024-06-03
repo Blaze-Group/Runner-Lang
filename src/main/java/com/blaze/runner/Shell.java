@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 import static com.blaze.runner.Programs.Runcode.Run;
+import static com.blaze.runner.Programs.Runcode.Debug;
 
 
 public class Shell {
@@ -42,8 +43,15 @@ public class Shell {
 
 
     public static void main(String[] args) throws Exception {
-        if(args.length > 0) {
+        if(args.length == 1) {
             Run(args[0]);
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Press enter to exit...");
+            scanner.next();
+            System.exit(1);
+        }
+        else if (args.length == 2) {
+            Debug(args[0]);
             Scanner scanner = new Scanner(System.in);
             System.out.println("Press enter to exit...");
             scanner.next();
@@ -131,6 +139,7 @@ public class Shell {
                         FileSystem
                         GUI
                         Graphics (In Development)
+                        Interface
                         JSON
                         Loader
                         Math

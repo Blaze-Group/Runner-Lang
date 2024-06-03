@@ -5,9 +5,7 @@ import com.blaze.runner.Libary.*;
 import com.blaze.runner.Runtime.*;
 import com.blaze.runner.Runtime.Values.*;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.function.Consumer;
@@ -25,6 +23,7 @@ public abstract class ComponentValue extends MapValue {
     }
 
     private void init() {
+        set("setFont", new FunctionValue(this::setFont));
         set("onKeyAction", new FunctionValue(this::addKeyListener));
         set("addKeyListener", new FunctionValue(this::addKeyListener));
         set("getFocusTraversalKeysEnabled", Converters.voidToBoolean(component::getFocusTraversalKeysEnabled));
@@ -59,13 +58,18 @@ public abstract class ComponentValue extends MapValue {
         set("repaint", Converters.voidToVoid(component::repaint));
         set("revalidate", Converters.voidToVoid(component::revalidate));
         set("setMaximumSize", voidDimensionFunction(component::setMaximumSize));
-        set("setGeometry", voidDimensionFunction(component::setMinimumSize));
+        set("setMinimumSize", voidDimensionFunction(component::setMinimumSize));
         set("setName", Converters.stringToVoid(component::setName));
         set("setPreferredSize", voidDimensionFunction(component::setPreferredSize));
         set("setSize", voidDimensionFunction(component::setSize));
         set("setVisible", Converters.booleanOptToVoid(component::setVisible));
         set("setLocation", new FunctionValue(this::setLocation));
         set("validate", Converters.voidToVoid(component::validate));
+    }
+
+    private Value setFont(Value[] args) {
+        component.setFont(new Font(args[0].asString(), args[1].asInt(), args[2].asInt()));
+        return NumberValue.ZERO;
     }
 
     private Value addKeyListener(Value[] args) {

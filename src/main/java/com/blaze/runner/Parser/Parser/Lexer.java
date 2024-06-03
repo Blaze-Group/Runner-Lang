@@ -1,8 +1,11 @@
 package com.blaze.runner.Parser.Parser;
 
 import com.blaze.runner.Exceptions.LexerException;
+import com.blaze.runner.Exceptions.TypeException;
+import com.blaze.runner.Libary.Function;
 import com.blaze.runner.Libary.Functions;
 import com.blaze.runner.Parser.Standart.Standart;
+import com.blaze.runner.Programs.Log;
 import com.blaze.runner.Runtime.Values.NumberValue;
 import com.blaze.runner.Runtime.Values.StringValue;
 
@@ -102,7 +105,7 @@ public final class Lexer {
         KEYWORDS.put("import", TokenType.IMPORT);
         KEYWORDS.put("switch", TokenType.SWITCH);
         KEYWORDS.put("case", TokenType.CASE);
-        KEYWORDS.put("include", TokenType.INCLUDE);
+        KEYWORDS.put("!include", TokenType.INCLUDE);
         KEYWORDS.put("class", TokenType.CLASS);
         KEYWORDS.put("new", TokenType.NEW);
         KEYWORDS.put("var", TokenType.VAR);
@@ -367,8 +370,8 @@ public final class Lexer {
     }
 
     private void Standart() {
-        Functions.set("Input", new Standart.Input());
-        Functions.set("InputLine", new Standart.InputLine());
+        Functions.set("input", new Standart.Input());
+        Functions.set("inputLine", new Standart.InputLine());
         Functions.set("try", new Standart.tryCatch());
         Functions.set("Replace", new Standart.Replacement());
 

@@ -1,9 +1,6 @@
 package com.blaze.runner.Parser.Visitors;
 
-import com.blaze.runner.Parser.AST.AssignmentExpression;
-import com.blaze.runner.Parser.AST.IncludeStatement;
-import com.blaze.runner.Parser.AST.UsingStatement;
-import com.blaze.runner.Parser.AST.VariableExpression;
+import com.blaze.runner.Parser.AST.*;
 import com.blaze.runner.Parser.Parser.Console;
 import com.blaze.runner.Runtime.Variables;
 

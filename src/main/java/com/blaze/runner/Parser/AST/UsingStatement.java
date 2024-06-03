@@ -1,12 +1,18 @@
 package com.blaze.runner.Parser.AST;
 
+import com.blaze.runner.Exceptions.ParseException;
 import com.blaze.runner.Exceptions.TypeException;
+import com.blaze.runner.Parser.Parser.*;
 import com.blaze.runner.Runtime.Values.ArrayValue;
 import com.blaze.runner.Libary.Types;
 import com.blaze.runner.Runtime.Value;
 import com.blaze.runner.Modules.Module;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 
 public final class UsingStatement extends InterruptableNode implements Statement {
@@ -38,13 +44,24 @@ public final class UsingStatement extends InterruptableNode implements Statement
         }
     }
 
-    private void loadModule(String name) {
+    public void loadModule(String name) {
         try {
             final Module module = (Module) Class.forName(String.format(PACKAGE, name, name)).newInstance();
             module.init();
         } catch (Exception ex) {
             throw new RuntimeException("Unable to load module " + name, ex);
         }
+    }
+
+    public Statement loadProgram(String path) throws IOException {
+        final String input = SourceLoader.readSource(path);
+        final List<Token> tokens = Lexer.tokenize(input);
+        final Parser parser = new Parser(tokens);
+        final Statement program = parser.parse();
+        if (parser.getParseErrors().hasErrors()) {
+            throw new ParseException(parser.getParseErrors().toString());
+        }
+        return program;
     }
 
     public void loadConstants() {

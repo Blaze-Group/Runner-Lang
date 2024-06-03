@@ -119,6 +119,7 @@ public final class GUI implements Module {
         initConstants();
         // Components
         Functions.set("Button", Components::newButton);
+        Functions.set("MenuBar", Components::newMenuBar);
         Functions.set("Label", Components::newLabel);
         Functions.set("Panel", Components::newPanel);
         Functions.set("ProgressBar", Components::newProgressBar);
@@ -127,13 +128,15 @@ public final class GUI implements Module {
         Functions.set("TextField", Components::newTextField);
         Functions.set("Window", Components::newWindow);
 
+        // FileDialogs
+        Functions.set("FileDialog", Components::newFileDialog);
 
         // LayoutManagers
-        Functions.set("borderLayout", LayoutManagers::borderLayout);
-        Functions.set("boxLayout", LayoutManagers::boxLayout);
-        Functions.set("cardLayout", LayoutManagers::cardLayout);
-        Functions.set("gridLayout", LayoutManagers::gridLayout);
-        Functions.set("flowLayout", LayoutManagers::flowLayout);
+        Functions.set("BorderLayout", LayoutManagers::borderLayout);
+        Functions.set("BoxLayout", LayoutManagers::boxLayout);
+        Functions.set("CardLayout", LayoutManagers::cardLayout);
+        Functions.set("GridLayout", LayoutManagers::gridLayout);
+        Functions.set("FlowLayout", LayoutManagers::flowLayout);
 
     }
 }

@@ -2,6 +2,7 @@ package com.blaze.runner.Modules.System;
 
 import com.blaze.runner.Libary.Arguments;
 import com.blaze.runner.Libary.Function;
+import com.blaze.runner.Programs.Runcode;
 import com.blaze.runner.Shell;
 import com.blaze.runner.Modules.Module;
 import com.blaze.runner.Parser.Parser.Console;
@@ -39,7 +40,7 @@ public class System implements Module {
             }
         });
 
-        SystemMap.set("getProperty", new getProperty());
+        SystemMap.set("get", new getProperty());
         SystemMap.set("getAddress", new Function() {
             @Override
             public Value execute(Value... args) {
@@ -98,12 +99,24 @@ public class System implements Module {
         SystemMap.set("getScreenGeometry", new Function() {
             @Override
             public Value execute(Value... args) {
-                Toolkit toolkit = Toolkit.getDefaultToolkit();
-                Dimension dim = toolkit.getScreenSize();
-                MapValue map = new MapValue(2);
-                map.set("width", new NumberValue(dim.getWidth()));
-                map.set("height", new NumberValue(dim.getHeight()));
-                return map;
+                return new ScreenValue();
+            }
+        });
+        SystemMap.set("exec", new Function() {
+            @Override
+            public Value execute(Value... args) {
+                final Runcode.RunOptions options;
+                try {
+                    options = new Runcode.RunOptions();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    Runcode.RunProgram(args[0].asString(), options, "", true);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                return NumberValue.ZERO;
             }
         });
         SystemMap.set("execute", new Function() {
@@ -145,6 +158,21 @@ public class System implements Module {
                 return new StringValue(Shell.getVer());
             }
             return new StringValue(java.lang.System.getProperty(args[0].asString()));
+        }
+    }
+
+    private static class ScreenValue extends MapValue {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension dim = toolkit.getScreenSize();
+
+        public ScreenValue() {
+            super(2);
+            init();
+        }
+
+        private void init() {
+            set("width", new NumberValue(dim.width));
+            set("height", new NumberValue(dim.height));
         }
     }
 }

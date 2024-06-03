@@ -203,7 +203,7 @@ public class TFont implements Module {
     @Override
     public void init() {
         MapValue TFontMap = new MapValue(1);
-        TFontMap.set("render", new Function() {
+        TFontMap.set("renderText", new Function() {
             @Override
             public Value execute(Value... args) {
                 Arguments.check(1, args.length);

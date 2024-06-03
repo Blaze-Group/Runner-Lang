@@ -36,7 +36,7 @@ public class PrintVisitor implements ResultVisitor<StringBuilder, StringBuilder>
     @Override
     public StringBuilder visit(AssignmentExpression s, StringBuilder t) {
         s.target.accept(this, t);
-        t.append(' ').append((s.operation == null) ? "" : s.operation);
+        t.append("var ").append((s.operation == null) ? "" : s.operation);
         t.append("= ");
         s.expression.accept(this, t);
         return t;

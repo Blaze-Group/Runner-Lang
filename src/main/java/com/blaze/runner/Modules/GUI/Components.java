@@ -2,10 +2,12 @@ package com.blaze.runner.Modules.GUI;
 
 import com.blaze.runner.Libary.Arguments;
 import com.blaze.runner.Runtime.Value;
+import com.blaze.runner.Shell;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
+import java.net.URL;
 import javax.swing.*;
 
 /**
@@ -19,10 +21,14 @@ public final class Components {
         Arguments.checkOrOr(0, 1, args.length);
         String title = (args.length == 1) ? args[0].asString() : "";
         final JFrame frame = new JFrame(title);
-        ImageIcon icon = new ImageIcon("Runner.ico");
+        ImageIcon icon = new ImageIcon("Icons\\gui.png");
         frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return new JFrameValue(frame);
+    }
+
+    static Value newMenuBar(Value[] args) {
+        return new JMenuBarValue(new JMenuBar());
     }
 
     static Value newPanel(Value[] args) {
@@ -32,6 +38,10 @@ public final class Components {
             panel.setLayout( ((LayoutManagerValue) args[0]).layout );
         }
         return new JPanelValue(panel);
+    }
+
+    static Value newFileDialog(Value[] args) {
+        return new JFileOpenerValue(new JFileChooser());
     }
 
     static Value newButton(Value[] args) {

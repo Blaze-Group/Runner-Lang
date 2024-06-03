@@ -78,12 +78,12 @@ inputStr = toString(Input("Name: "))
 ```
 **_Для создание проверки:_**
 ```cpp
-IF (2 > 0) {
+if (2 > 0) {
   outline("2 > 0")
-} ELSE IF (2 < 0) {
+} else if (2 < 0) {
   outline("2 < 0")
-} ELSE {
-  outline("ELSE")
+} else {
+  outline("else")
 }
 ```
 **_Конвертеры:_**
